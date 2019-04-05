@@ -1,7 +1,7 @@
 import threading
 
 def small(cat):
-    print('id : {} name : {}'.format(threading.currentThread().id, threading.currentThread().name))
+    print('id : {} name : {}'.format(threading.currentThread().ident, threading.currentThread().name))
     sum = 0
     for i in cat:
         if i.islower():
@@ -9,6 +9,7 @@ def small(cat):
     print('lowercase letters are: ', sum)
 
 def capital(cat):
+    print('id : {} name : {}'.format(threading.currentThread().ident, threading.currentThread().name))
     sum = 0
     for i in cat:
         if i.isupper():
@@ -16,6 +17,7 @@ def capital(cat):
     print('uppercase letters are: ', sum)
 
 def digit(cat):
+    print('id : {} name : {}'.format(threading.currentThread().ident, threading.currentThread().name))
     sum = 0
     for i in cat:
         if i.isdigit():
