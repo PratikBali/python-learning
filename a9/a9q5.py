@@ -11,20 +11,25 @@ def openFile():
         offset = 0
         t1 = fd1.read()
         sub = 'this'
-
+        
         while flag:
             if t1:
                 print(t1)
                 offset = t1.find(sub, offset, len(t1) -1)
-                counter = counter + 1
-                fd1.seek(offset + len(sub))
-                t1 = fd1.read()
+                print('offset', offset)
+                if offset > 0:
+                    counter = counter + 1
+                    fd1.seek(offset )
+                    t1 = fd1.read()
+                    print('frequency of this is:', counter)
+                else:
+                    break
+        
             else:
                 flag = False
 
-        print('frequency of this is:', counter)
+print('frequency of this is:', counter)
 
-
-        fd1.close()
+fd1.close()
 
 openFile()
