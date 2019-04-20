@@ -1,0 +1,9 @@
+print dup
+Duplicate files Found
+		/Users/pratikbali/Desktop/Python/a11/abc/A/a1/a1a/Log.txt
+		/Users/pratikbali/Desktop/Python/a11/abc/A/a1/a1b/__init__.py
+		/Users/pratikbali/Desktop/Python/a11/abc/C/c1/c1c/__init__.py
+		/Users/pratikbali/Desktop/Python/a11/abc/B/b3/b3c/Log.txt
+		/Users/pratikbali/Desktop/Python/a11/abc/B/b3/b3b/Log.txt
+		/Users/pratikbali/Desktop/Python/a11/abc/B/b1/b1b/__init__.py
+('Execution time', 0.010063886642456055)
