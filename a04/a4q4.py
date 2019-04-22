@@ -1,3 +1,4 @@
+from functools import reduce
 arr = list()
 def fun():
     sum1 = 0
