@@ -1,0 +1,11 @@
+print dup
+Duplicate files Found
+		/Users/pratikbali/Desktop/Python/a11/abc/C/c3/c3a/.DS_Store
+		/Users/pratikbali/Desktop/Python/a11/abc/C/c2/c2b/.DS_Store
+		/Users/pratikbali/Desktop/Python/a11/abc/A/a2/a2b/Log.txt
+		/Users/pratikbali/Desktop/Python/a11/abc/A/a1/a1a/Log.txt
+		/Users/pratikbali/Desktop/Python/a11/abc/C/c1/c1b/Log.txt
+		/Users/pratikbali/Desktop/Python/a11/abc/B/b2/b2b/Log.txt
+		/Users/pratikbali/Desktop/Python/a11/abc/B/b2/b2c/__init__ copy.py
+		/Users/pratikbali/Desktop/Python/a11/abc/B/b3/b3c/__init__ copy.py
+		/Users/pratikbali/Desktop/Python/a11/abc/B/b1/b1b/__init__ copy.py
