@@ -2,30 +2,27 @@ from sys import argv
 import os
 import time
 import psutil
-# import urllib
 import urllib2
 import smtplib
-import schedule
 from email import encoders
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 import socket
 
-argc = 2
+argc = 3
 
 def is_connected():
     try:
-        urllib2.urlopen('http://216.58.192.142', timeout = 1)
+        urllib2.urlopen('http://216.58.192.142', timeout = 2)
         return True
     except Exception as err:
         print(err)
         return False
 
-def MailSender(filename, time):
+def MailSender(filename, time, mail_to):
     try:
         mail_from = "pratikbali01@gmail.com"
-        mail_to = "pratikbali96@gmail.com"
         msg = MIMEMultipart()
 
         msg['from'] = mail_from
@@ -35,10 +32,10 @@ def MailSender(filename, time):
         body = """
         Hello %s
         Welcome to Hydrogen
-        Please find attached as log of running proc
+        Please find attached file as log of running process in mac
         log file is created at %s
 
-        This is Auto Generated Mail """%(mail_to, time)
+        This is Auto Generated Mail \n\n"""%(mail_to, time)
 
         msg.attach(MIMEText(body, 'plain'))
         attachment = open(filename, 'rb')
@@ -54,7 +51,7 @@ def MailSender(filename, time):
         s = smtplib.SMTP('smtp.gmail.com', 587)
         s.starttls()
 
-        s.login(mail_from, '---')
+        s.login(mail_from, '--')
 
         text = msg.as_string()
 
@@ -66,7 +63,7 @@ def MailSender(filename, time):
     except Exception as err:
         print(err)
 
-def ProcessDisplay(path):
+def ProcessDisplay(path, mail_to):
     listProcess = []
     srcdir = path
 
@@ -102,7 +99,7 @@ def ProcessDisplay(path):
         if is_connected():
             start_time = time.time()
             print(time.ctime())
-            MailSender(log_path, time.ctime())
+            MailSender(log_path, time.ctime(), mail_to)
             print(time.ctime())
             end_time = time.time()
 
@@ -111,12 +108,13 @@ def ProcessDisplay(path):
             print('No internet connection')
 
 def main():
+    print('hi')
     if len(argv) != argc:
         print('Argument length must be ', argc)
         exit()
 
     try:
-        ProcessDisplay(argv[1])
+        ProcessDisplay(argv[1], argv[2])
     except Exception as e:
         print('ERROR: Exception occurred : ', e)
 
