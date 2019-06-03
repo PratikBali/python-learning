@@ -9,8 +9,9 @@ def myPredict(weather, temparature, play):
 
 
 def main():
-    file = ('WinePredictor.xlsx')
-    data = pd.read_excel(file)
+    csv_file = ('WinePredictor.csv')
+    excel_file = ('WinePredictor.xlsx')
+    data = pd.read_excel(excel_file)
     # print(data.iloc[0:0, ])
 
     features = data.drop("Table 1", axis=1)
@@ -19,7 +20,6 @@ def main():
 
     target = data["Table 1"]
     target = target.drop([0], axis=0)
-        1
 
     data_train, data_test, target_train, target_test = train_test_split(
         features, target, test_size=0.5)
