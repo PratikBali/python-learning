@@ -6,7 +6,7 @@ import matplotlib.pyplot as plot
 def HeadBrainPredictor():
 
     # load data
-    data = pd.read_csv('MarvellousHeadBrain.csv')
+    data = pd.read_csv('HeadBrain.csv')
 
     # print size of data
     print('Size of data:', data.shape)
@@ -73,6 +73,7 @@ def HeadBrainPredictor():
 
 
 def main():
+    print('Machine Learning / Superwised / Regression / Linear')
     HeadBrainPredictor()
 
 
