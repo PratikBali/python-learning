@@ -7,7 +7,7 @@ border = '* ' * 50
 
 def HeadBrainPredictor():
     # Load data
-    data = pd.read_csv('HeadBrain.csv')
+    data = pd.read_csv('../datasets/DatasetHeadBrain.csv')
 
     # Size
     print(border)
