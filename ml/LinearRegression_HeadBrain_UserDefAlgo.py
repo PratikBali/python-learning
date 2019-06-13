@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from copy import deepcopy
 import matplotlib.pyplot as plot
 
 
@@ -9,7 +10,7 @@ def HeadBrainPredictor():
     data = pd.read_csv('DatasetHeadBrain.csv')
 
     # print size of data
-    print('Size of data:', data.shape)ß
+    print('Size of data:', data.shape)
 
     # get Data
     axis_x = data['Head Size(cm^3)'].values

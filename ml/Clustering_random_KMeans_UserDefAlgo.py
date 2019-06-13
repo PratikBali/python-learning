@@ -16,15 +16,15 @@ def KMean():
     print(center_3)
 
     # Generate random data and center it to the three centers
-    data_1 = np.random.randn(7, 2)+center_1
+    data_1 = np.random.randn(7, 2) + center_1
     print("\nElement of first cluster with size "+str(len(data_1)))
     print(data_1)
 
-    data_2 = np.random.randn(7, 2)+center_2
+    data_2 = np.random.randn(7, 2) + center_2
     print("Elements of second cluster with size "+str(len(data_2)))
     print(data_2)
 
-    data_3 = np.random.randn(7, 2)+center_3
+    data_3 = np.random.randn(7, 2) + center_3
     print("Element of third cluster with size "+str(len(data_3)))
     print(data_3)
 
@@ -32,7 +32,7 @@ def KMean():
     print("\nSize of complete data set "+str(len(data)))
 
     plot.scatter(data[:, 0], data[:, 1], s=7)
-    plot.title('Marvellous Infosystem : Input Dataset')
+    plot.title('Input Dataset')
     plot.show()
 
     # number of clusters
@@ -60,7 +60,7 @@ def KMean():
     # Plot the data and the centeres generated as random
     plot.scatter(data[:, 0], data[:, 1], c='r', s=7)
     plot.scatter(centers[:, 0], centers[:, 1], marker='*', c='g', s=150)
-    plot.title('Marvellous Infosystem : Input Dataset with random centroid')
+    plot.title('Input Dataset with random centroid')
     plot.show()
 
     # To store old centers
@@ -110,7 +110,8 @@ def KMean():
 
     # plot the data and the center generated as random
     plot.scatter(data[:, 0], data[:, 1], s=7)
-    plot.scatter(centers[:, 0], centers[:, 1], marker='*', c='g', s=150)
+    plot.scatter(centers_new[:, 0], centers_new[:, 1],
+                 marker='*', c='g', s=150)
     plot.title('Marvellous Infosystem : Final data with centroid')
     plot.show()
 

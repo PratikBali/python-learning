@@ -7,24 +7,26 @@ weather = {}
 temparature = {}
 play = {}
 
+
 def mypredict():
 
-    # classified = tree.DecisionTreeClassifier()
+    classified = tree.DecisionTreeClassifier()
 
     # classified = classified.fit(BallsFeatures, Lables)
 
     # predicted = classified.predict([[44,1]])
 
+
 def main():
     with open('PlayPredictor.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
-        print('csv_reader',csv_reader)
+        print('csv_reader', csv_reader)
 
         line_count = 0
 
         for row in csv_reader:
             # print('hi')
-            print('row',row)
+            print('row', row)
             if line_count == 0:
                 # print(f'Column names are \n \t{", ".join(row)}')
                 line_count += 1
@@ -44,6 +46,7 @@ def main():
     # weather = encoder.fit_transform(weather)
 
     mypredict()
+
 
 if __name__ == "__main__":
     main()
