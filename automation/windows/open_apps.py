@@ -11,9 +11,6 @@ def openFiles():
   one_note_path = r'C:\Program Files (x86)\Microsoft Office\root\Office16\ONENOTE.EXE'
   os.startfile(one_note_path)
 
-  # open chrome with security flag false
-  chrome_command = r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe  --disable-web-security --allow-access-from-files --user-data-dir --profile-directory=Default'
-  subprocess.check_output(chrome_command)
 
   # open perforce 
   p4v_path = r'C:\Program Files\Perforce\p4v.exe'
@@ -31,6 +28,9 @@ def openFiles():
   code_path = r'C:\Users\pratibal\AppData\Local\Programs\Microsoft VS Code\Code.exe'
   os.startfile(code_path)
 
+  # open chrome with security flag false
+  chrome_command = r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe  --disable-web-security --allow-access-from-files --user-data-dir --profile-directory=Default'
+  op = subprocess.check_output(chrome_command)
 
 def main():
   openFiles()
