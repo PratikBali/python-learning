@@ -322,7 +322,7 @@ app.constant('CONFIG', {
   CAPL_CONTRACT_LINK: 'DOC008',
   APP_DETAILS: {
     APP_ENVIRONMENT: 'DEVELOPMENT',
-    APP_VERSION: '1.0.8'
+    APP_VERSION: '1.0.12'
   }
 
 });

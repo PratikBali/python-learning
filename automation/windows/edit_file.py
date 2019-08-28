@@ -1,65 +1,98 @@
 import os
 import fileinput
 
-# with fileinput.FileInput('../config.js', inplace=True, backup='.bak') as file:
-#     for line in file:
-#         print(line.replace('1.0.9', '1.0.8'), end='')
-
-# f = open('../config.js','r')
-# filedata = f.read()
-# f.close()
-# newdata = filedata.replace('ram', 'abcd')
-# with open('../config.js', 'w') as file:
-#   file.write(newdata)
-
-def openFile():
+def changeCofigVersion():
   lines = 0
+  offset = 0
+  content = 0
+  # adjust = 4
+  oldVersion = 0
+  newVersion = 0
+  newData = ''
 
-  with open('../config.js', 'r+') as f:
-    for lno, line in enumerate(f, 1):
+  os.chmod('../config.js', 0o777)
+
+  with open('../config.js', 'r') as fd:
+    for lno, line in enumerate(fd, 1):
       if 'APP_VERSION: ' in line:
-        print('lines', lno)
         lines = lno
         break
-    f.close()
 
-    try:
-      fd = open('../config.js', 'r+')
-    except IOError as io:
-      print('File does not exist')
-    else:
-      print('File  exist')
-      offset = 0
-      content = fd.read()
-      # lines = fd.readlines()
-      subString = 'APP_VERSION: '
+    fd.seek(offset)
+    content = fd.read()
+    subString = 'APP_VERSION: '
 
+    if content:
+      offset = content.find(subString, offset, len(content) -1)
 
-      
-      if content:
-        print('file length:', len(content))
-        offset = content.find(subString, offset, len(content) -1)
-        print('offset found:', offset)
+      if offset > 0:
+        offset = offset + len(subString) + lines 
+        fd.seek(offset)
+        oldVersion = fd.read(8)
+        oldVersion = oldVersion.split('\'')
+        oldVersion = oldVersion[0]
+        print('oldVersion:', oldVersion)
+        arr = oldVersion.split('.')
+        arr[len(arr)-1] = str(int(arr[len(arr)-1]) + 1)
+        newVersion = '.'.join(arr)
+        print('newVersion:', newVersion)
 
-        if subString in content:
-          print('found at index:', content.index(subString))
-          # print(lines)
-          # print('found at line:', lines.index(subString))
+        newData = content.replace(oldVersion, newVersion)
 
-        if offset > 0:
-          fd.seek(offset + len(subString) + lines + 2)
-          content = fd.read(3)
-          print('content:', content)
-          print('content convert:', float(content))
-          content +=  1
-          print('content incresed:', content)
+    fd.close()
 
-        
-        fd.close()
+  with open('../config.js', 'w') as file:
+    file.write(newData)
+
+def changeUpdateVersion():
+  lines = 0
+  offset = 0
+  content = 0
+  oldVersion = 0
+  newVersion = 0
+  adjust = 3
+  newData = ''
+
+  os.chmod('../uxfme-update-config.json', 0o777)
+
+  with open('../uxfme-update-config.json', 'r') as fd:
+    for lno, line in enumerate(fd, 1):
+      if 'updateversion' in line:
+        lines = lno
+        print(lines)
+        break
+
+    fd.seek(offset)
+    content = fd.read()
+    subString = 'updateversion'
+
+    if content:
+      offset = content.find(subString, offset, len(content) -1)
+
+      if offset > 0:
+        offset = offset + len(subString) + lines + adjust
+        fd.seek(offset)
+        oldVersion = fd.read(8)
+        oldVersion = oldVersion.split('\"')
+        oldVersion = oldVersion[0]
+        print('oldVersion:', oldVersion)
+        arr = oldVersion.split('.')
+        arr[len(arr)-1] = str(int(arr[len(arr)-1]) + 1)
+        newVersion = '.'.join(arr)
+        print('newVersion:', newVersion)
+
+        newData = content.replace(oldVersion, newVersion)
+
+    fd.close()
+
+  with open('../uxfme-update-config.json', 'w') as file:
+    file.write(newData)
+    pass
 
 def main():
+  # changeCofigVersion()
+  # changeUpdateVersion()
   pass
-  openFile()
 
 if __name__ == "__main__":
   main()
